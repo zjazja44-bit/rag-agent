@@ -1,0 +1,55 @@
+# ---------------------------------------------------------------------------
+# rag-agent configuration.
+# Precedence (low -> high):  dataclass defaults  <  this file  <  env vars.
+# Env override naming:  RAG__<SECTION>__<FIELD>  e.g. RAG__LLM__CHAT_MODEL=gpt-4o-mini
+# ---------------------------------------------------------------------------
+
+llm:
+  provider: openai_compat        # openai_compat | mock
+  base_url: https://api.deepseek.com/v1
+  api_key_env: OPENAI_API_KEY    # name of the env var holding the key
+  chat_model: deepseek-chat
+  temperature: 0.2
+  max_tokens: 1024
+  request_timeout: 60.0
+
+embedding:
+  provider: openai_compat        # openai_compat | fastembed | local | mock
+  base_url: https://api.openai.com/v1
+  api_key_env: OPENAI_API_KEY
+  model: text-embedding-3-small  # 智谱: embedding-3 | 通义: text-embedding-v3
+  dim: 1536                      # used only by local/mock; auto-detected otherwise
+  batch_size: 32
+
+ingest:
+  chunk_size: 512                # characters per chunk
+  chunk_overlap: 64              # characters shared between neighbours
+  min_chunk_size: 64             # merge tiny tail chunks
+  splitter: recursive            # recursive | fixed
+
+retrieval:
+  top_k: 5                       # chunks handed to the generator
+  candidate_k: 20                # candidates pulled per retriever before fusion
+  vector_weight: 1.0
+  bm25_weight: 1.0
+  rrf_k: 60                      # Reciprocal Rank Fusion constant
+  rerank: true                   # LLM reranking of the fused candidates
+  rerank_top_n: 5
+
+store:
+  dir: ./artifacts/store
+  name: default
+
+agent:
+  max_steps: 6                   # tool-calling loop budget
+  tools: [knowledge_search, calculator]
+
+memory:
+  max_turns: 10                  # history turns kept per session
+
+server:
+  host: 127.0.0.1
+  port: 8000
+
+logging:
+  level: WARNING        # INFO 会打印加载/请求日志；想看过程改成 INFO

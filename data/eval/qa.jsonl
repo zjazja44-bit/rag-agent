@@ -1,0 +1,10 @@
+{"question": "什么是检索增强生成（RAG）？", "relevant_docs": ["rag_basics.md"], "answer_keywords": ["检索", "生成"]}
+{"question": "RAG 为什么能缓解大模型的幻觉问题？", "relevant_docs": ["rag_basics.md"], "answer_keywords": ["知识库", "来源"]}
+{"question": "文档切分时，片段（chunk）过大会带来什么问题？", "relevant_docs": ["rag_basics.md"], "answer_keywords": ["噪声", "上下文"]}
+{"question": "向量检索和关键词检索各自的优缺点是什么？", "relevant_docs": ["vector_search.md"], "answer_keywords": ["语义", "BM25"]}
+{"question": "RRF（倒数排名融合）是怎么把两路检索结果合并的？", "relevant_docs": ["vector_search.md"], "answer_keywords": ["排名", "倒数"]}
+{"question": "两阶段检索里的重排序（rerank）起什么作用？", "relevant_docs": ["vector_search.md"], "answer_keywords": ["候选", "排序"]}
+{"question": "什么是工具调用（function calling）？", "relevant_docs": ["llm_agent.md"], "answer_keywords": ["工具", "参数"]}
+{"question": "Agentic RAG 和普通的 RAG 有什么区别？", "relevant_docs": ["llm_agent.md"], "answer_keywords": ["自主", "检索"]}
+{"question": "多轮对话里为什么需要查询改写？", "relevant_docs": ["llm_agent.md"], "answer_keywords": ["指代", "改写"]}
+{"question": "评测 RAG 系统时，检索侧常看哪些指标？", "relevant_docs": ["llm_agent.md"], "answer_keywords": ["命中", "排名"]}
